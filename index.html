@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suit</title>
+  <style>
+    body {
+      font-family: Calibri, sans-serif;
+      background-color: rgb(255, 218, 170);
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      background-color: beige;
+      padding: 90px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      max-width: 80%;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .but {
+      background-color: black;
+      color: white;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      font-size: 2rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .but:hover {
+      transform: scale(1.1);
+    }
+
+    @media (min-width: 600px) {
+      .but {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 style="margin-bottom: 60px;">Game Suit</h1>
+    <p>Pilih</p>
+    <div class="buttons">
+      <button class="but" onclick="playGame('Batu')">👊</button>
+      <button class="but" onclick="playGame('Gunting')">✌</button>
+      <button class="but" onclick="playGame('Kertas')">🖐</button>
+    </div>
+  </div>
+
+  <script>
+    function playGame(userChoice) {
+      const choices = ['Batu', 'Gunting', 'Kertas'];
+      const komputer = choices[Math.floor(Math.random() * choices.length)];
+      
+      let hasil = '';
+      if (userChoice === komputer) {
+        hasil = 'dan Bot Seri 😊';
+      } else if (
+        (userChoice === 'Batu' && komputer === 'Gunting') ||
+        (userChoice === 'Gunting' && komputer === 'Kertas') ||
+        (userChoice === 'Kertas' && komputer === 'Batu')
+      ) {
+        hasil = 'Menang 😆';
+      } else {
+        hasil = 'Kalah 😫';
+      }
+      
+      alert(`User memilih ${userChoice}. Bot memilih ${komputer}. User ${hasil}`);
+    }
+  </script>
+</body>
+</html>
